@@ -1,6 +1,7 @@
 # Built application files
 *.apk
 *.ap_
+*.jar
 
 # Files for the Dalvik VM
 *.dex
@@ -20,6 +21,7 @@ proguard/
 
 # Built application files
 /*/build/
+build/
 
 # Crashlytics configuations
 com_crashlytics_export_strings.xml
