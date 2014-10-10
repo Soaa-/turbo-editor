@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Vlad/Documents/AndroidStudioProjects/turbo-editor/libraries/FloatingActionButton/res/values/attrs.xml -->
+    <!-- From: file:/C:/Users/Alain/Documents/code-projects/turbo-editor/libraries/FloatingActionButton/res/values/attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="FloatingActionButton">

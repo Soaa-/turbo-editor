@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="C:\Users\Vlad\Documents\AndroidStudioProjects\turbo-editor\libraries\FloatingActionButton\assets" />
+        <source path="C:\Users\Alain\Documents\code-projects\turbo-editor\libraries\FloatingActionButton\assets" />
     </dataSet>
     <dataSet config="release" >
-        <source path="C:\Users\Vlad\Documents\AndroidStudioProjects\turbo-editor\libraries\FloatingActionButton\src\release\assets" />
+        <source path="C:\Users\Alain\Documents\code-projects\turbo-editor\libraries\FloatingActionButton\src\release\assets" />
     </dataSet>
 
 </merger>

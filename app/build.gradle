@@ -16,26 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 buildscript {
     repositories {
         maven { url 'http://download.crashlytics.com/maven' }
     }
 
-    dependencies {
-        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
-    }
-
 }
-
 apply plugin: 'com.android.application'
-apply plugin: 'crashlytics'
-
-repositories {
-    maven { url 'http://download.crashlytics.com/maven' }
-}
-
-
 
 android {
     compileSdkVersion 19
@@ -58,11 +45,8 @@ android {
         }
     }
 }
-
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     compile project(':libraries:sharedCode')
     compile 'com.google.android.gms:play-services:5.0.89'
-    compile 'com.crashlytics.android:crashlytics:1.+'
-
 }

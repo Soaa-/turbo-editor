@@ -21,7 +21,6 @@ package com.maskyn.fileeditor;
 
 import android.os.Bundle;
 
-import com.crashlytics.android.Crashlytics;
 import sharedcode.turboeditor.activity.BaseHomeActivity;
 import sharedcode.turboeditor.preferences.PreferenceHelper;
 
@@ -33,8 +32,6 @@ public class HomeActivity extends BaseHomeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(PreferenceHelper.getSendErrorReports(this))
-            Crashlytics.start(this);
         // setup the ads
         adsHelper = new AdsHelper(this);
     }
