@@ -20,6 +20,7 @@
 package sharedcode.turboeditor.views;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ScrollView;
@@ -28,6 +29,7 @@ public class GoodScrollView extends ScrollView {
 
     public ScrollInterface scrollInterface;
     int lastY;
+    boolean listenerEnabled = true;
 
     public GoodScrollView(Context context) {
         super(context);
@@ -48,9 +50,8 @@ public class GoodScrollView extends ScrollView {
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        if (scrollInterface == null) return;
 
-
+        if (scrollInterface == null || !listenerEnabled) return;
 
         if (Math.abs(lastY - t) > 100) {
             lastY = t;
@@ -59,11 +60,21 @@ public class GoodScrollView extends ScrollView {
 
     }
 
-    public boolean hasReachedBottom(){
-        View firstChild = getChildAt(getChildCount()-1);
+    public boolean hasReachedBottom() {
+        View firstChild = getChildAt(getChildCount() - 1);
 
-        int diff = (firstChild.getBottom()-(getHeight()+getScrollY()+firstChild.getTop()));// Calculate the scrolldiff
+        int diff = (firstChild.getBottom() - (getHeight() + getScrollY() + firstChild.getTop()));// Calculate the scrolldiff
         return diff <= 0;
+    }
+
+    public void tempDisableListener(int mills) {
+        listenerEnabled = false;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                listenerEnabled = true;
+            }
+        }, mills);
     }
 
 

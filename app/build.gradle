@@ -25,14 +25,14 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 20
+    buildToolsVersion '20.0.0'
     defaultConfig {
         applicationId "com.maskyn.fileeditor"
-        minSdkVersion 14
+        minSdkVersion 11
         targetSdkVersion 19
-        versionCode 27
-        versionName "1.11"
+        versionCode 30
+        versionName "1.13"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -43,6 +43,13 @@ android {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
     }
 }
 dependencies {

@@ -78,10 +78,17 @@ public class AdapterDrawer extends
 
                 }
             });
-            if (TextUtils.equals(selectedPath, files.get(position).getAbsolutePath()))
+
+            if (TextUtils.equals(selectedPath, files.get(position).getAbsolutePath())) {
                 hold.nameLabel.setTypeface(hold.nameLabel.getTypeface(), Typeface.BOLD);
-            else
+                convertView.setBackgroundColor((convertView.getResources()
+                        .getColor(R.color.item_selected)));
+            } else {
                 hold.nameLabel.setTypeface(hold.nameLabel.getTypeface(), Typeface.NORMAL);
+                convertView.setBackgroundColor((convertView.getResources()
+                        .getColor(android.R.color.transparent)));
+            }
+
         } else {
             final ViewHolder hold = ((ViewHolder) convertView.getTag());
             final String fileName = files.get(position).getName();
@@ -95,18 +102,22 @@ public class AdapterDrawer extends
                         selectedPath = "";
                 }
             });
+
             if (TextUtils.equals(selectedPath, files.get(position).getAbsolutePath())) {
-                hold.nameLabel.setTypeface(hold.nameLabel.getTypeface(), Typeface.BOLD);
-            }
-            else {
-                hold.nameLabel.setTypeface(hold.nameLabel.getTypeface(), Typeface.NORMAL);
+                hold.nameLabel.setTypeface(null, Typeface.BOLD);
+                convertView.setBackgroundColor((convertView.getResources()
+                        .getColor(R.color.item_selected)));
+            } else {
+                hold.nameLabel.setTypeface(null, Typeface.NORMAL);
+                convertView.setBackgroundColor((convertView.getResources()
+                        .getColor(android.R.color.transparent)));
             }
         }
         return convertView;
     }
 
     public void selectView(String selectedPath) {
-        callbacks.ItemSelected(selectedPath);
+        //callbacks.ItemSelected(selectedPath);
         this.selectedPath = selectedPath;
         notifyDataSetChanged();
     }
@@ -114,7 +125,7 @@ public class AdapterDrawer extends
     public interface Callbacks {
         void CancelItem(int position, boolean andCloseOpenedFile);
 
-        void ItemSelected(String path);
+        //void ItemSelected(String path);
     }
 
     public static class ViewHolder {
