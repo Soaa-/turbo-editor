@@ -102,8 +102,7 @@ public class PageSystem {
         if (page < 0) page = 0;
         boolean shouldUpdateLines = page > currentPage && canReadNextPage();
         if (shouldUpdateLines) {
-            String text = getCurrentPageText();
-            int nOfNewLineNow = (text.length() - text.replace("\n", "").length()) + 1; // normally the last line is not counted so we have to add 1
+            int nOfNewLineNow = pages.get(currentPage).getNumLines();
             int nOfNewLineBefore = pages.get(currentPage + 1).getStartingLine() - pages.get(currentPage).getStartingLine();
             int difference = nOfNewLineNow - nOfNewLineBefore;
             updateStartingLines(currentPage + 1, difference);
@@ -119,7 +118,7 @@ public class PageSystem {
         pages.get(0).setStartingLine(0);
         for (i = 1; i < pages.size(); i++) {
             Page page = pages.get(i - 1);
-            nOfNewLines = page.getText().length() - page.getText().replace("\n", "").length() + 1;
+            nOfNewLines = page.getNumLines();
             startingLine = page.getStartingLine() + nOfNewLines;
             pages.get(i).setStartingLine(startingLine);
         }

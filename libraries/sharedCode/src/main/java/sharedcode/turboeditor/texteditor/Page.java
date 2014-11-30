@@ -8,6 +8,10 @@ public class Page {
         this.text = text;
     }
 
+    public int getNumLines() {
+        return text.split("[\r\n]").length;
+    }
+
     public int getStartingLine() {
         return startingLine;
     }
