@@ -1,71 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-41f226dbcf5c4fc8005661d3a3bb5c4f3597dba0.jar"
-        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\turbo-editor.libraries\sharedCode\unspecified\classes.jar"
+        jar="C:\Users\Alain\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="e03217c06539f5cec4cc7fe8ea745ce15f2a34d9"/>
+        revision="20.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\library-2.4.0-bc1ae02ba989dda85a00702ed60884c62d8fe8d3.jar" />
+    </item>
     <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\commons-io-2.4-bf3cf61a2547a6e1aadaefd650bd14cf14af6552.jar"
-        jar="C:\Users\Alain\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad"/>
-    <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\juniversalchardet-1.0.3-7193630bc3bd698df225a696de28c95bef8f1614.jar"
-        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\turbo-editor.libraries\sharedCode\unspecified\libs\juniversalchardet-1.0.3.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="591d72211acc0b909b79c840e0b3ed9a0982d807"/>
-    <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-fb3162fc9498683e0e8ee18ccce0e43d8102a8a3.jar"
-        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
-    <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\eventbus-2.2.1-2555647b3430f254b5cfa14ff32052e03ecf5ebf.jar"
         jar="C:\Users\Alain\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.2.1\a18ff12a9ab5ae52fd30d42f134517997568231e\eventbus-2.2.1.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e"/>
+        revision="20.0.0"
+        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\eventbus-2.2.1-2555647b3430f254b5cfa14ff32052e03ecf5ebf.jar" />
+    </item>
     <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-c98773438fc414b536262ae0ed4bd43ba130ab72.jar"
-        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
-    <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-68db85c2d11bcfe92301f58567df688432d1d6ac.jar"
-        jar="C:\Users\Alain\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
-    <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-d914f2c63d7e8ef87e2d2bd86560b304eee1b5f2.jar"
-        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\com.github.gabrielemariotti.changeloglib\library\1.5.1\classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="74a89f0f8b56d9f11d70b8d8134cf4109f4797dc"/>
-    <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-aa291ea5dd93ab760dc3fa770207e5e2a8b342e0.jar"
         jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\turbo-editor.libraries\FloatingActionButton\unspecified\classes.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="6a3f403e855110e4ace3613704309c22d4249519"/>
+        revision="20.0.0"
+        sha1="319eb1c499dafd55b667579082757481195e9f4e">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-aa291ea5dd93ab760dc3fa770207e5e2a8b342e0.jar" />
+    </item>
     <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\juniversalchardet-1.0.3-sources-a3826c51ef1c49471e549f52a7b6ec2d4a52c4cc.jar"
+        jar="C:\Users\Alain\Libs\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-99f8c5b0714b5c50150741d501d419e2da4e1809.jar" />
+    </item>
+    <item
+        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\turbo-editor.libraries\sharedCode\unspecified\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a7c519a7a343ce72060077a396edb23b70a271f4">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-41f226dbcf5c4fc8005661d3a3bb5c4f3597dba0.jar" />
+    </item>
+    <item
+        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\turbo-editor.libraries\sharedCode\unspecified\libs\juniversalchardet-1.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="591d72211acc0b909b79c840e0b3ed9a0982d807">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\juniversalchardet-1.0.3-7193630bc3bd698df225a696de28c95bef8f1614.jar" />
+    </item>
+    <item
         jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\turbo-editor.libraries\sharedCode\unspecified\libs\juniversalchardet-1.0.3-sources.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="77979eaa98f90806f984155f44f63cc1fb60ac25"/>
+        revision="20.0.0"
+        sha1="77979eaa98f90806f984155f44f63cc1fb60ac25">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\juniversalchardet-1.0.3-sources-a3826c51ef1c49471e549f52a7b6ec2d4a52c4cc.jar" />
+    </item>
     <item
-        dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-085f4070deb89a06e2beef55ebafb51d6690d558.jar"
+        jar="C:\Users\Alain\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.1\905075e6c80f206bbe6cf1e809d2caa69f420c76\commons-lang3-3.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="905075e6c80f206bbe6cf1e809d2caa69f420c76">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\commons-lang3-3.1-a1d4dc962e36a63254c09c1a6e119e3d3f8f75e6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Alain\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\commons-io-2.4-bf3cf61a2547a6e1aadaefd650bd14cf14af6552.jar" />
+    </item>
+    <item
+        jar="C:\Users\Alain\Libs\android-sdk\extras\android\m2repository\com\android\support\support-v4\19.0.1\support-v4-19.0.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="587da9a481ffd341d2fa091704489b89845ddacd">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\support-v4-19.0.1-90e86fe7a12800cd60e09fdda4c2b06083be862b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\com.github.gabrielemariotti.changeloglib\library\1.5.1\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="74a89f0f8b56d9f11d70b8d8134cf4109f4797dc">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-d914f2c63d7e8ef87e2d2bd86560b304eee1b5f2.jar" />
+    </item>
+    <item
         jar="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\exploded-aar\turbo-editor.libraries\RootCommands\unspecified\classes.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="e90efec15b898634b174fbffc4b1a89b2505afc2"/>
+        revision="20.0.0"
+        sha1="75831099e3aa64928f96470e9fcfda27bbf91548">
+        <dex dex="C:\Users\Alain\Documents\code-projects\turbo-editor\app-pro\build\intermediates\pre-dexed\debug\classes-085f4070deb89a06e2beef55ebafb51d6690d558.jar" />
+    </item>
 
-</pre-dex-items>
+</items>
