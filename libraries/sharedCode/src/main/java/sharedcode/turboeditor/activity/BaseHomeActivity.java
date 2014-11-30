@@ -590,11 +590,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
         mEditor = (Editor) findViewById(R.id.editor);
 
         if (PreferenceHelper.getWrapContent(getBaseContext())) {
-            horizontalScroll.removeView(mEditor);
-            verticalScroll.removeView(horizontalScroll);
-            verticalScroll.addView(mEditor);
-        } else {
-            // else show what is in the xml file fragment_editor.xml-
+            setScrollVerticalOnly();
         }
 
         if (PreferenceHelper.getReadOnly(getBaseContext())) {
@@ -610,6 +606,18 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
         pageSystemButtons = new PageSystemButtons(getBaseContext(), this,
                 (FloatingActionButton) findViewById(R.id.fabPrev),
                 (FloatingActionButton) findViewById(R.id.fabNext));
+    }
+
+    private void setScrollVerticalHorizontal() {
+        verticalScroll.removeView(mEditor);
+        verticalScroll.addView(horizontalScroll);
+        horizontalScroll.addView(mEditor);
+    }
+
+    private void setScrollVerticalOnly() {
+        horizontalScroll.removeView(mEditor);
+        verticalScroll.removeView(horizontalScroll);
+        verticalScroll.addView(mEditor);
     }
 
     private void showTextEditor() {
@@ -876,13 +884,9 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
         if (event.hasType(WRAP_CONTENT)) {
             if (PreferenceHelper.getWrapContent(getBaseContext())) {
-                horizontalScroll.removeView(mEditor);
-                verticalScroll.removeView(horizontalScroll);
-                verticalScroll.addView(mEditor);
+                setScrollVerticalOnly();
             } else {
-                verticalScroll.removeView(mEditor);
-                verticalScroll.addView(horizontalScroll);
-                horizontalScroll.addView(mEditor);
+                setScrollVerticalHorizontal();
             }
         } else if (event.hasType(LINE_NUMERS)) {
             mEditor.disableTextChangedListener();
