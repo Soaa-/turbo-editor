@@ -384,6 +384,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
         return true;
     }
 
+    // TODO replace with switch statement
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int i = item.getItemId();

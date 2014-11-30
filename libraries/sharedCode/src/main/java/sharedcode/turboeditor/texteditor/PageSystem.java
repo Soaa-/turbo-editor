@@ -28,10 +28,9 @@ import sharedcode.turboeditor.preferences.PreferenceHelper;
 
 public class PageSystem {
 
-    private List<String> pages;
-    private int[] startingLines;
-    private int currentPage = 0;
+    private List<Page> pages;
     private PageSystemInterface pageSystemInterface;
+    private int currentPage = 0;
 
     public PageSystem(Context context, PageSystemInterface pageSystemInterface, String text) {
         this.pageSystemInterface = pageSystemInterface;
@@ -50,27 +49,26 @@ public class PageSystem {
                 indexOfReturn = text.indexOf("\n", to);
                 if (indexOfReturn > to) to = indexOfReturn;
                 if (to > text.length()) to = text.length();
-                pages.add(text.substring(i, to));
+                pages.add(new Page(text.substring(i, to)));
                 i = to + 1;
             }
 
 
             if (i == 0)
-                pages.add("");
+                pages.add(new Page(""));
         } else {
-            pages.add(text);
+            pages.add(new Page(text));
         }
 
-        startingLines = new int[pages.size()];
         setStartingLines();
     }
 
     public int getStartingLine() {
-        return startingLines[currentPage];
+        return pages.get(currentPage).getStartingLine();
     }
 
     public String getCurrentPageText() {
-        return pages.get(currentPage);
+        return pages.get(currentPage).getText();
     }
 
     public String getTextOfNextPages(boolean includeCurrent, int nOfPages) {
@@ -86,7 +84,7 @@ public class PageSystem {
     }
 
     public void savePage(String currentText) {
-        pages.set(currentPage, currentText);
+        pages.get(currentPage).setText(currentText);
     }
 
     public void nextPage() {
@@ -106,7 +104,7 @@ public class PageSystem {
         if (shouldUpdateLines) {
             String text = getCurrentPageText();
             int nOfNewLineNow = (text.length() - text.replace("\n", "").length()) + 1; // normally the last line is not counted so we have to add 1
-            int nOfNewLineBefore = startingLines[currentPage + 1] - startingLines[currentPage];
+            int nOfNewLineBefore = pages.get(currentPage + 1).getStartingLine() - pages.get(currentPage).getStartingLine();
             int difference = nOfNewLineNow - nOfNewLineBefore;
             updateStartingLines(currentPage + 1, difference);
         }
@@ -118,13 +116,12 @@ public class PageSystem {
         int i;
         int startingLine;
         int nOfNewLines;
-        String text;
-        startingLines[0] = 0;
+        pages.get(0).setStartingLine(0);
         for (i = 1; i < pages.size(); i++) {
-            text = pages.get(i - 1);
-            nOfNewLines = text.length() - text.replace("\n", "").length() + 1;
-            startingLine = startingLines[i - 1] + nOfNewLines;
-            startingLines[i] = startingLine;
+            Page page = pages.get(i - 1);
+            nOfNewLines = page.getText().length() - page.getText().replace("\n", "").length() + 1;
+            startingLine = page.getStartingLine() + nOfNewLines;
+            pages.get(i).setStartingLine(startingLine);
         }
     }
 
@@ -134,7 +131,8 @@ public class PageSystem {
         int i;
         if (fromPage < 1) fromPage = 1;
         for (i = fromPage; i < pages.size(); i++) {
-            startingLines[i] += difference;
+            int curLine = pages.get(i).getStartingLine();
+            pages.get(i).setStartingLine(curLine + difference);
         }
     }
 
@@ -147,11 +145,11 @@ public class PageSystem {
     }
 
     public String getAllText(String currentPageText) {
-        pages.set(currentPage, currentPageText);
+        savePage(currentPageText);
         int i;
         StringBuilder allText = new StringBuilder();
         for (i = 0; i < pages.size(); i++) {
-            allText.append(pages.get(i)).append("\n");
+            allText.append(pages.get(i).getText()).append("\n");
         }
         return allText.toString();
     }

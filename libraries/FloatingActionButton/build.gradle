@@ -4,7 +4,7 @@ android {
     buildToolsVersion '20.0.0'
 
     defaultConfig {
-        applicationId 'com.faizmalkani.floatingactionbutton'
+        // applicationId 'com.faizmalkani.floatingactionbutton'
         minSdkVersion 7
         targetSdkVersion 19
         versionName "1.0"
