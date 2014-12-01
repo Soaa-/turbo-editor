@@ -26,13 +26,13 @@ import java.util.List;
 
 import sharedcode.turboeditor.preferences.PreferenceHelper;
 
-public class PageSystem {
+public class PageManager {
 
     private List<Page> pages;
     private PageSystemInterface pageSystemInterface;
     private int currentPage = 0;
 
-    public PageSystem(Context context, PageSystemInterface pageSystemInterface, String text) {
+    public PageManager(Context context, PageSystemInterface pageSystemInterface, String text) {
         this.pageSystemInterface = pageSystemInterface;
         pages = new LinkedList<>();
 

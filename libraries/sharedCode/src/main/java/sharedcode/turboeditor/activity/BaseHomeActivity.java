@@ -84,7 +84,7 @@ import sharedcode.turboeditor.task.SaveFileTask;
 import sharedcode.turboeditor.texteditor.EditTextPadding;
 import sharedcode.turboeditor.texteditor.FileUtils;
 import sharedcode.turboeditor.texteditor.LineUtils;
-import sharedcode.turboeditor.texteditor.PageSystem;
+import sharedcode.turboeditor.texteditor.PageManager;
 import sharedcode.turboeditor.texteditor.PageSystemButtons;
 import sharedcode.turboeditor.texteditor.Patterns;
 import sharedcode.turboeditor.texteditor.SearchResult;
@@ -109,7 +109,7 @@ import static sharedcode.turboeditor.util.EventBusEvents.APreferenceValueWasChan
 import static sharedcode.turboeditor.util.EventBusEvents.APreferenceValueWasChanged.Type.WRAP_CONTENT;
 
 public abstract class BaseHomeActivity extends Activity implements FindTextDialog
-        .SearchDialogInterface, GoodScrollView.ScrollInterface, PageSystem.PageSystemInterface,
+        .SearchDialogInterface, GoodScrollView.ScrollInterface, PageManager.PageSystemInterface,
         PageSystemButtons.PageButtonsInterface, SeekbarDialog.ISeekbarDialog, SaveFileDialog.ISaveDialog {
 
     //region EDITOR VARIABLES
@@ -157,7 +157,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
     private HorizontalScrollView horizontalScroll;
     private boolean searchingText;
     private SearchResult searchResult;
-    private PageSystem pageSystem;
+    private PageManager pageManager;
     private PageSystemButtons pageSystemButtons;
     private String currentEncoding = "UTF-8";
     //endregion
@@ -280,7 +280,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
             } else if (mDrawerLayout.isDrawerOpen(Gravity.END) && fileOpened) {
                 mDrawerLayout.closeDrawer(Gravity.END);
             } else if (fileOpened && mEditor.canSaveFile()) {
-                SaveFileDialog.newInstance(sFilePath, pageSystem.getAllText(mEditor
+                SaveFileDialog.newInstance(sFilePath, pageManager.getAllText(mEditor
                         .getText().toString()), currentEncoding).show(getFragmentManager(),
                         "dialog");
             } else if (fileOpened) {
@@ -530,11 +530,11 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
     private void saveTheFile() {
         File file = new File(sFilePath);
         if (!file.getName().isEmpty())
-            new SaveFileTask(getBaseContext(), sFilePath, pageSystem.getAllText(mEditor.getText()
+            new SaveFileTask(getBaseContext(), sFilePath, pageManager.getAllText(mEditor.getText()
                     .toString()), currentEncoding).execute();
         else {
             NewFileDetailsDialog dialogFrag = NewFileDetailsDialog.newInstance
-                    (pageSystem.getAllText(mEditor.getText().toString()), currentEncoding);
+                    (pageManager.getAllText(mEditor.getText().toString()), currentEncoding);
             dialogFrag.show(getFragmentManager().beginTransaction(), "dialog");
         }
     }
@@ -601,7 +601,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
         verticalScroll.setScrollInterface(this);
 
-        pageSystem = new PageSystem(getBaseContext(), this, "");
+        pageManager = new PageManager(getBaseContext(), this, "");
 
         pageSystemButtons = new PageSystemButtons(getBaseContext(), this,
                 (FloatingActionButton) findViewById(R.id.fabPrev),
@@ -634,7 +634,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
         invalidateOptionsMenu();
 
         mEditor.disableTextChangedListener();
-        mEditor.replaceTextKeepCursor(pageSystem.getCurrentPageText(), false);
+        mEditor.replaceTextKeepCursor(pageManager.getCurrentPageText(), false);
         mEditor.enableTextChangedListener();
     }
 
@@ -719,7 +719,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
     public void onEvent(final EventBusEvents.NewFileToOpen event) {
 
         if (fileOpened && mEditor.canSaveFile()) {
-            SaveFileDialog.newInstance(sFilePath, pageSystem.getAllText(mEditor
+            SaveFileDialog.newInstance(sFilePath, pageManager.getAllText(mEditor
                     .getText().toString()), currentEncoding, true, event.getFile().getAbsolutePath()).show(getFragmentManager(),
                     "dialog");
             return;
@@ -811,7 +811,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
                 } else {
 
                     sFilePath = event.getFile().getAbsolutePath();
-                    pageSystem = new PageSystem(getBaseContext(), BaseHomeActivity.this, fileText);
+                    pageManager = new PageManager(getBaseContext(), BaseHomeActivity.this, fileText);
                     currentEncoding = encoding;
 
                     EventBus.getDefault().post(new EventBusEvents.AFileIsSelected(sFilePath));
@@ -998,10 +998,10 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
     //region Ovverideses
     @Override
     public void nextPageClicked() {
-        pageSystem.savePage(mEditor.getText().toString());
-        pageSystem.nextPage();
+        pageManager.savePage(mEditor.getText().toString());
+        pageManager.nextPage();
         mEditor.disableTextChangedListener();
-        mEditor.replaceTextKeepCursor(pageSystem.getCurrentPageText(), false);
+        mEditor.replaceTextKeepCursor(pageManager.getCurrentPageText(), false);
         mEditor.enableTextChangedListener();
 
         verticalScroll.postDelayed(new Runnable() {
@@ -1020,10 +1020,10 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
     @Override
     public void prevPageClicked() {
-        pageSystem.savePage(mEditor.getText().toString());
-        pageSystem.prevPage();
+        pageManager.savePage(mEditor.getText().toString());
+        pageManager.prevPage();
         mEditor.disableTextChangedListener();
-        mEditor.replaceTextKeepCursor(pageSystem.getCurrentPageText(), false);
+        mEditor.replaceTextKeepCursor(pageManager.getCurrentPageText(), false);
         mEditor.enableTextChangedListener();
 
         verticalScroll.postDelayed(new Runnable() {
@@ -1042,8 +1042,8 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
     @Override
     public void pageSystemButtonLongClicked() {
-        int maxPages = pageSystem.getMaxPage();
-        int currentPage = pageSystem.getCurrentPage();
+        int maxPages = pageManager.getMaxPage();
+        int currentPage = pageManager.getCurrentPage();
         SeekbarDialog dialogFrag = SeekbarDialog.newInstance
                 (SeekbarDialog.Actions.SelectPage, 0, currentPage, maxPages);
 
@@ -1052,12 +1052,12 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
     @Override
     public boolean canReadNextPage() {
-        return pageSystem.canReadNextPage();
+        return pageManager.canReadNextPage();
     }
 
     @Override
     public boolean canReadPrevPage() {
-        return pageSystem.canReadPrevPage();
+        return pageManager.canReadPrevPage();
     }
 
     @Override
@@ -1110,10 +1110,10 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
     @Override
     public void onSeekbarDialogDismissed(SeekbarDialog.Actions action, int value) {
         if (action == SeekbarDialog.Actions.SelectPage) {
-            pageSystem.savePage(mEditor.getText().toString());
-            pageSystem.goToPage(value);
+            pageManager.savePage(mEditor.getText().toString());
+            pageManager.goToPage(value);
             mEditor.disableTextChangedListener();
-            mEditor.replaceTextKeepCursor(pageSystem.getCurrentPageText(), true);
+            mEditor.replaceTextKeepCursor(pageManager.getCurrentPageText(), true);
             mEditor.enableTextChangedListener();
 
             verticalScroll.postDelayed(new Runnable() {
@@ -1394,11 +1394,11 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
             if (PreferenceHelper.getLineNumbers(getContext())) {
                 if (lineCount != getLineCount() || startingLine != ((BaseHomeActivity) getContext
-                        ()).pageSystem.getStartingLine()) {
-                    startingLine = ((BaseHomeActivity) getContext()).pageSystem.getStartingLine();
+                        ()).pageManager.getStartingLine()) {
+                    startingLine = ((BaseHomeActivity) getContext()).pageManager.getStartingLine();
                     lineCount = getLineCount();
 
-                    lineUtils.updateHasNewLineArray(((BaseHomeActivity) getContext()).pageSystem
+                    lineUtils.updateHasNewLineArray(((BaseHomeActivity) getContext()).pageManager
                             .getStartingLine(), lineCount, getLayout(), getText().toString());
                 }
 
