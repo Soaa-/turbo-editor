@@ -27,21 +27,21 @@ import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 
 import sharedcode.turboeditor.R;
 
-public class PageSystemButtons {
+public class PageButtons {
 
     private static final int TIME_TO_SHOW_FABS = 2000;
     final Handler handler = new Handler();
     final Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            PageSystemButtons.this.next.setVisibility(View.GONE);
-            PageSystemButtons.this.prev.setVisibility(View.GONE);
+            PageButtons.this.next.setVisibility(View.GONE);
+            PageButtons.this.prev.setVisibility(View.GONE);
         }
     };
     FloatingActionButton prev, next;
     PageButtonsInterface pageButtonsInterface;
 
-    public PageSystemButtons(Context context, final PageButtonsInterface pageButtonsInterface, FloatingActionButton prev, FloatingActionButton next) {
+    public PageButtons(Context context, final PageButtonsInterface pageButtonsInterface, FloatingActionButton prev, FloatingActionButton next) {
         this.prev = prev;
         this.next = next;
         this.pageButtonsInterface = pageButtonsInterface;
@@ -92,14 +92,14 @@ public class PageSystemButtons {
     public void updateVisibility(boolean autoHide) {
 
         if (pageButtonsInterface.canReadNextPage())
-            PageSystemButtons.this.next.setVisibility(View.VISIBLE);
+            PageButtons.this.next.setVisibility(View.VISIBLE);
         else
-            PageSystemButtons.this.next.setVisibility(View.GONE);
+            PageButtons.this.next.setVisibility(View.GONE);
 
         if (pageButtonsInterface.canReadPrevPage())
-            PageSystemButtons.this.prev.setVisibility(View.VISIBLE);
+            PageButtons.this.prev.setVisibility(View.VISIBLE);
         else
-            PageSystemButtons.this.prev.setVisibility(View.GONE);
+            PageButtons.this.prev.setVisibility(View.GONE);
 
         /*if(pageButtonsInterface.hasNext())
             next.showFab();

@@ -85,7 +85,7 @@ import sharedcode.turboeditor.texteditor.EditTextPadding;
 import sharedcode.turboeditor.texteditor.FileUtils;
 import sharedcode.turboeditor.texteditor.LineUtils;
 import sharedcode.turboeditor.texteditor.PageManager;
-import sharedcode.turboeditor.texteditor.PageSystemButtons;
+import sharedcode.turboeditor.texteditor.PageButtons;
 import sharedcode.turboeditor.texteditor.Patterns;
 import sharedcode.turboeditor.texteditor.SearchResult;
 import sharedcode.turboeditor.util.AccessStorageApi;
@@ -110,7 +110,7 @@ import static sharedcode.turboeditor.util.EventBusEvents.APreferenceValueWasChan
 
 public abstract class BaseHomeActivity extends Activity implements FindTextDialog
         .SearchDialogInterface, GoodScrollView.ScrollInterface, PageManager.PageSystemInterface,
-        PageSystemButtons.PageButtonsInterface, SeekbarDialog.ISeekbarDialog, SaveFileDialog.ISaveDialog {
+        PageButtons.PageButtonsInterface, SeekbarDialog.ISeekbarDialog, SaveFileDialog.ISaveDialog {
 
     //region EDITOR VARIABLES
     static final int
@@ -158,7 +158,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
     private boolean searchingText;
     private SearchResult searchResult;
     private PageManager pageManager;
-    private PageSystemButtons pageSystemButtons;
+    private PageButtons pageButtons;
     private String currentEncoding = "UTF-8";
     //endregion
 
@@ -603,7 +603,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
         pageManager = new PageManager(getBaseContext(), this, "");
 
-        pageSystemButtons = new PageSystemButtons(getBaseContext(), this,
+        pageButtons = new PageButtons(getBaseContext(), this,
                 (FloatingActionButton) findViewById(R.id.fabPrev),
                 (FloatingActionButton) findViewById(R.id.fabNext));
     }
@@ -1088,7 +1088,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
     @Override
     public void onPageChanged(int page) {
-        pageSystemButtons.updateVisibility(false);
+        pageButtons.updateVisibility(false);
         searchingText = false;
         mEditor.clearHistory();
         invalidateOptionsMenu();
@@ -1096,7 +1096,7 @@ public abstract class BaseHomeActivity extends Activity implements FindTextDialo
 
     @Override
     public void onScrollChanged(int l, int t, int oldl, int oldt) {
-        pageSystemButtons.updateVisibility(Math.abs(t) > 10);
+        pageButtons.updateVisibility(Math.abs(t) > 10);
 
         if (!PreferenceHelper.getSyntaxHiglight(getBaseContext()) || (mEditor.hasSelection() &&
                 !searchingText) || updateHandler == null || colorRunnable_duringScroll == null)
